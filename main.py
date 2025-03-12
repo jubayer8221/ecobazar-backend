@@ -2009,31 +2009,35 @@ data = {
 }
 
 
+@app.get("/popularCategories", response_model=List[Product])
+def get_popular_categories():
+    return data["popularCategories"]
+
 @app.get("/featured-products", response_model=List[Product])
 def get_featured_products():
     return data["featured_products"]
 
-@app.get("/popular-categories", response_model=List[Dict])
-def get_popular_categories():
-    return data["popularCategories"]
+# @app.get("/popular-categories", response_model=List[Dict])
+# def get_popular_categories():
+#     return data["popularCategories"]
+  
+# @app.get("/api/products/popular", response_model=List[Product])
+# def get_popular_products():
+#     return data["popularProduct"]
 
-@app.get("/api/products/popular", response_model=List[Product])
-def get_popular_products():
-    return data["popularProduct"]
+# @app.get("/api/products/{product_id}", response_model=Product)
+# def get_product(product_id: int):
+#     for product in data["popularProduct"]:
+#         if product["id"] == product_id:
+#             return product
+#     raise HTTPException(status_code=404, detail="Product not found")
 
-@app.get("/api/products/{product_id}", response_model=Product)
-def get_product(product_id: int):
-    for product in data["popularProduct"]:
-        if product["id"] == product_id:
-            return product
-    raise HTTPException(status_code=404, detail="Product not found")
-
-@app.get("/api/products/category/{category}", response_model=List[Product])
-def get_products_by_category(category: str):
-    products = [product for product in data["allProduct"] if product["category"] == category]
-    if not products:
-        raise HTTPException(status_code=404, detail="Category not found")
-    return products
+# @app.get("/api/products/category/{category}", response_model=List[Product])
+# def get_products_by_category(category: str):
+#     products = [product for product in data["allProduct"] if product["category"] == category]
+#     if not products:
+#         raise HTTPException(status_code=404, detail="Category not found")
+#     return products
 
 # @app.get("/")
 # def home():

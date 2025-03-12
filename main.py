@@ -34,122 +34,121 @@ class Product(BaseModel):
 
 
 data = {
- 
   "featured_products": [
     {
-        "id": 101,
-        "name": "Chinese Vegetables",
-        "price": 28,
-        "oldPrice": 48.0,
-        "quantity": 1,
-        "image": "/images/hot1.png",
-        "thumbnails": [
-            "/images/thumnail1.png",
-            "/images/thumnail2.png",
-            "/images/thumnail3.png",
-            "/images/thumnail1.png",
-            "/images/thumnail1.png",
-            "/images/thumnail1.png"
-        ],
-        "sale": "54%",
-        "rating": 5,
-        "stock": "In Stock",
-        "description": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla nibh diam, blandit vel consequat nec, ultrices et ipsum.",
-        "brand": "Farmunity",
-        "sku": "2,51,594",
-        "category": "Vegetables",
-        "tags": ["Vegetables", "Healthy", "Chinese", "Cabbage", "Green Cabbage"]
+      "id": 101,
+      "name": "Chinese Vegetables",
+      "price": 20.28,
+      "oldPrice": 48.0,
+      "quantity": 1,
+      "image": "/images/hot1.png",
+      "thumbnails": [
+        "/images/thumnail1.png",
+        "/images/thumnail2.png",
+        "/images/thumnail3.png",
+        "/images/thumnail1.png",
+        "/images/thumnail1.png",
+        "/images/thumnail1.png"
+      ],
+      "sale": "54%",
+      "rating": 5,
+      "stock": "In Stock",
+      "description": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla nibh diam, blandit vel consequat nec, ultrices et ipsum.",
+      "brand": "Farmunity",
+      "sku": "2,51,594",
+      "category": "Vegetables",
+      "tags": ["Vegetables", "Healthy", "Chinese", "Cabbage", "Green Cabbage"]
     },
     {
-        "id": 102,
-        "name": "Chinese cabbage",
-        "price": 12.0,
-        "quantity": 1,
-        "oldPrice": None,
-        "image": "/images/hot2.png",
-        "thumbnails": [
-            "/images/hot1.png",
-            "/images/hot2.png",
-            "/images/hot3.png",
-            "/images/hot4.png"
-        ],
-        "rating": 4,
-        "stock": "In Stock",
-        "description": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla nibh diam, blandit vel consequat nec, ultrices et ipsum.",
-        "brand": "Farmunity",
-        "sku": "2,51,594",
-        "category": "Vegetables",
-        "tags": ["Vegetables", "Healthy", "Chinese", "Cabbage", "Green Cabbage"]
+      "id": 102,
+      "name": "Chinese cabbage",
+      "price": 12.0,
+      "quantity": 1,
+      "oldPrice": None,
+      "image": "/images/hot2.png",
+      "thumbnails": [
+        "/images/hot1.png",
+        "/images/hot2.png",
+        "/images/hot3.png",
+        "/images/hot4.png"
+      ],
+      "rating": 4,
+      "stock": "In Stock",
+      "description": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla nibh diam, blandit vel consequat nec, ultrices et ipsum.",
+      "brand": "Farmunity",
+      "sku": "2,51,594",
+      "category": "Vegetables",
+      "tags": ["Vegetables", "Healthy", "Chinese", "Cabbage", "Green Cabbage"]
     },
     {
-        "id": 103,
-        "name": "Green Lettuce",
-        "price": 9.0,
-        "quantity": 1,
-        "oldPrice": None,
-        "image": "/images/hot3.png",
-        "thumbnails": [
-            "/images/hot1.png",
-            "/images/hot2.png",
-            "/images/hot3.png",
-            "/images/hot4.png",
-            "/images/hot3.png",
-            "/images/hot4.png"
-        ],
-        "rating": 104,
-        "stock": "In Stock",
-        "description": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla nibh diam, blandit vel consequat nec, ultrices et ipsum.",
-        "brand": "Farmunity",
-        "sku": "2,51,594",
-        "category": "Vegetables",
-        "tags": ["Vegetables", "Healthy", "Chinese", "Cabbage", "Green Cabbage"]
+      "id": 103,
+      "name": "Green Lettuce",
+      "price": 9.0,
+      "quantity": 1,
+      "oldPrice": None,
+      "image": "/images/hot3.png",
+      "thumbnails": [
+        "/images/hot1.png",
+        "/images/hot2.png",
+        "/images/hot3.png",
+        "/images/hot4.png",
+        "/images/hot3.png",
+        "/images/hot4.png"
+      ],
+      "rating": 104,
+      "stock": "In Stock",
+      "description": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla nibh diam, blandit vel consequat nec, ultrices et ipsum.",
+      "brand": "Farmunity",
+      "sku": "2,51,594",
+      "category": "Vegetables",
+      "tags": ["Vegetables", "Healthy", "Chinese", "Cabbage", "Green Cabbage"]
     },
     {
-        "id": 104,
-        "name": "Eggplant",
-        "price": 34.0,
-        "quantity": 1,
-        "oldPrice": None,
-        "image": "/images/hot4.png",
-        "rating": 3,
-        "sale": "40%",
-        "thumbnails": [
-            "/images/hot1.png",
-            "/images/hot2.png",
-            "/images/hot3.png",
-            "/images/hot4.png"
-        ],
-        "stock": "In Stock",
-        "description": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla nibh diam, blandit vel consequat nec, ultrices et ipsum.",
-        "brand": "Farmunity",
-        "sku": "2,51,594",
-        "category": "Vegetables",
-        "tags": ["Vegetables", "Healthy", "Chinese", "Cabbage", "Green Cabbage"]
+      "id":104,
+      "name": "Eggplant",
+      "price": 34.0,
+      "quantity": 1,
+      "oldPrice": None,
+      "image": "/images/hot4.png",
+      "rating": 3,
+      "sale": "40%",
+      "thumbnails": [
+        "/images/hot1.png",
+        "/images/hot2.png",
+        "/images/hot3.png",
+        "/images/hot4.png"
+      ],
+      "stock": "In Stock",
+      "description": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla nibh diam, blandit vel consequat nec, ultrices et ipsum.",
+      "brand": "Farmunity",
+      "sku": "2,51,594",
+      "category": "Vegetables",
+      "tags": ["Vegetables", "Healthy", "Chinese", "Cabbage", "Green Cabbage"]
     },
     {
-        "id": 105,
-        "name": "Fresh Cauliflower",
-        "price": 12.0,
-        "quantity": 1,
-        "oldPrice": None,
-        "image": "/images/hot5.png",
-        "rating": 4,
-        "sale": "40%",
-        "thumbnails": [
-            "/images/hot1.png",
-            "/images/hot2.png",
-            "/images/hot3.png",
-            "/images/hot4.png"
-        ],
-        "stock": "In Stock",
-        "description": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla nibh diam, blandit vel consequat nec, ultrices et ipsum.",
-        "brand": "Farmunity",
-        "sku": "2,51,594",
-        "category": "Vegetables",
-        "tags": ["Vegetables", "Healthy", "Chinese", "Cabbage", "Green Cabbage"]
+      "id": 105,
+      "name": "Fresh Cauliflower",
+      "price": 12.0,
+      "quantity": 1,
+      "oldPrice": None,
+      "image": "/images/hot5.png",
+      "rating": 4,
+      "sale": "40%",
+      "thumbnails": [
+        "/images/hot1.png",
+        "/images/hot2.png",
+        "/images/hot3.png",
+        "/images/hot4.png"
+      ],
+      "stock": "In Stock",
+      "description": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla nibh diam, blandit vel consequat nec, ultrices et ipsum.",
+      "brand": "Farmunity",
+      "sku": "2,51,594",
+      "category": "Vegetables",
+      "tags": ["Vegetables", "Healthy", "Chinese", "Cabbage", "Green Cabbage"]
     }
-],
-    "popularCategories": [
+  ],
+  "popular_categories": [
     {
       "id": 201,
       "name": "Fresh Fruit",
@@ -459,7 +458,7 @@ data = {
       "tags": ["Vegetables", "Healthy", "Chinese", "Cabbage", "Green Cabbage"]
     }
   ],
-  "popularProduct": [
+  "popular_product": [
     {
       "id": 301,
       "price": 20.0,
@@ -791,7 +790,7 @@ data = {
       "tags": ["Vegetables", "Healthy", "Chinese", "Cabbage", "Green Cabbage"]
     }
   ],
-  "hotDealsProduct": [
+  "hotDeals_product": [
     {
       "id": 401,
       "name": "Chinese cabbage",
@@ -1044,7 +1043,7 @@ data = {
       "rating": 5
     }
   ],
-  "allProduct":[
+  "all_product":[
     
       {
         "id": 101,
@@ -2004,40 +2003,38 @@ data = {
         "tags": ["Fruits", "Healthy", "Mango"]
       }
     
-  ],
-
+  ]
 }
 
-
-@app.get("/popularCategories", response_model=List[Product])
-def get_popular_categories():
-    return data["popularCategories"]
-
-@app.get("/featured-products", response_model=List[Product])
+@app.get("/data/featured_products", response_model=List[Product])
 def get_featured_products():
     return data["featured_products"]
 
-# @app.get("/popular-categories", response_model=List[Dict])
-# def get_popular_categories():
-#     return data["popularCategories"]
+@app.get("/data/popular_categories", response_model=List[Product])
+def get_popular_categories():
+    return data["popular_categories"]
+
+@app.get("/data/popular_product", response_model=List[Product])
+def get_popular_products():
+    return data["popular_product"]
   
-# @app.get("/api/products/popular", response_model=List[Product])
-# def get_popular_products():
-#     return data["popularProduct"]
+@app.get("/data/hotDeals_product", response_model=List[Product])
+def get_popular_products():
+    return data["hotDeals_product"]
 
-# @app.get("/api/products/{product_id}", response_model=Product)
-# def get_product(product_id: int):
-#     for product in data["popularProduct"]:
-#         if product["id"] == product_id:
-#             return product
-#     raise HTTPException(status_code=404, detail="Product not found")
+@app.get("/api/products/{product_id}", response_model=Product)
+def get_product(product_id: int):
+    for product in data["popular_product"]:
+        if product["id"] == product_id:
+            return product
+    raise HTTPException(status_code=404, detail="Product not found")
 
-# @app.get("/api/products/category/{category}", response_model=List[Product])
-# def get_products_by_category(category: str):
-#     products = [product for product in data["allProduct"] if product["category"] == category]
-#     if not products:
-#         raise HTTPException(status_code=404, detail="Category not found")
-#     return products
+@app.get("/api/products/category/{category}", response_model=List[Product])
+def get_products_by_category(category: str):
+    products = [product for product in data["all_product"] if product["category"] == category]
+    if not products:
+        raise HTTPException(status_code=404, detail="Category not found")
+    return products
 
 # @app.get("/")
 # def home():

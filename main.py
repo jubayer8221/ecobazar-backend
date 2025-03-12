@@ -2042,7 +2042,6 @@ def get_products_by_category(category: str):
   
 @app.get("/")
 def home():
-  return {"message": "Welcome to the FastAPI Fucked up API"}
     return data
 
 

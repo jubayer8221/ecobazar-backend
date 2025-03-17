@@ -23,5 +23,11 @@
       "src": "/(.*)",
       "dest": "server.py"
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    }
   ]
 }

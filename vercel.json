@@ -18,12 +18,6 @@
       "use": "@vercel/python"
     }
   ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "server.py"
-    }
-  ],
   "rewrites": [
     {
       "source": "/api/(.*)",

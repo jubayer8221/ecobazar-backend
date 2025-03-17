@@ -1,24 +1,24 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from typing import List, Dict, Optional
+from typing import List, Optional
 import logging
 
 logging.basicConfig(level=logging.INFO)
 
 app = FastAPI()
 
-
+# ✅ Configure CORS properly
 origins = [
     "http://localhost:3000",
-    "https://eco-bazar-psi.vercel.app", 
+    "https://eco-bazar-psi.vercel.app",
 ]
-# Allow requests from Next.js (Frontend)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"],  # Allow all HTTP methods
+    allow_methods=["*"],  
     allow_headers=["*"],
 )
 

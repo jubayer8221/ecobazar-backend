@@ -5,10 +5,16 @@ from typing import List, Dict, Optional
 
 app = FastAPI()
 
+
+origins = [
+    "http://localhost:3000",  # Local development
+    "https://eco-bazar-psi.vercel.app",  # Live frontend on Vercel
+]
 # Allow requests from Next.js (Frontend)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000/"],  # Change if frontend is hosted
+    allow_origins=origins,
+  # Change if frontend is hosted
      # Change this to specific frontend domains for security
     allow_credentials=True,
     allow_methods=["*"],  # Allow all HTTP methods

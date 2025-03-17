@@ -2021,42 +2021,27 @@ data = {
 
 @app.get("/data/featured_products", response_model=List[Product])
 async def get_featured_products():
-    """
-    Returns a list of featured products.
-    Replace the return statement with your actual data.
-    """
-    return []
+    
+    return data["featured_products"]
 
 @app.get("/data/popular_categories", response_model=List[Product])
 async def get_popular_categories():
-    """
-    Returns a list of popular categories.
-    Replace the return statement with your actual data.
-    """
-    return []
+    
+    return data["popular_categories"]
 
 @app.get("/data/popular_product", response_model=List[Product])
 async def get_popular_products():
-    """
-    Returns a list of popular products.
-    Replace the return statement with your actual data.
-    """
-    return []
+    
+    return data["popular_product"]
 
 @app.get("/data/hotDeals_product", response_model=List[Product])
 async def get_hot_deals_products():
-    """
-    Returns a list of hot deals products.
-    Replace the return statement with your actual data.
-    """
-    return []
+    
+    return data["hotDeals_product"]
 
 @app.get("/api/products/{product_id}", response_model=Product)
 async def get_product(product_id: int):
-    """
-    Returns a product by its ID.
-    Replace the logic with your actual data lookup.
-    """
+    
     raise HTTPException(status_code=404, detail="Product not found")
 
 @app.get("/api/products/category/{category}", response_model=List[Product])
@@ -2069,11 +2054,8 @@ async def get_products_by_category(category: str):
 
 @app.get("/")
 def home():
-    """
-    Home route that returns a welcome message or placeholder data.
-    Replace the return statement with your actual data.
-    """
-    return {"message": "Welcome to the FastAPI backend!"}
+   
+    return data
 
 # Middleware to log incoming requests
 @app.middleware("http")

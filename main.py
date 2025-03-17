@@ -2,7 +2,6 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Dict, Optional
-from starlette.middleware.cors import CORSMiddleware
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -2028,7 +2027,7 @@ def get_popular_products():
     return data["popular_product"]
   
 @app.get("/data/hotDeals_product", response_model=List[Product])
-def get_popular_products():
+def get_hot_deals_products():
     return data["hotDeals_product"]
 
 @app.get("/api/products/{product_id}", response_model=Product)

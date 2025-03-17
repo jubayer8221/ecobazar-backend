@@ -2015,30 +2015,30 @@ data = {
 }
 
 @app.get("/data/featured_products", response_model=List[Product])
-def get_featured_products():
+async def get_featured_products():
     return data["featured_products"]
 
 @app.get("/data/popular_categories", response_model=List[Product])
-def get_popular_categories():
+async def get_popular_categories():
     return data["popular_categories"]
 
 @app.get("/data/popular_product", response_model=List[Product])
-def get_popular_products():
+async def get_popular_products():
     return data["popular_product"]
   
 @app.get("/data/hotDeals_product", response_model=List[Product])
-def get_hot_deals_products():
+async def get_hot_deals_products():
     return data["hotDeals_product"]
 
 @app.get("/api/products/{product_id}", response_model=Product)
-def get_product(product_id: int):
+async def get_product(product_id: int):
     for product in data["popular_product"]:
         if product["id"] == product_id:
             return product
     raise HTTPException(status_code=404, detail="Product not found")
 
 @app.get("/api/products/category/{category}", response_model=List[Product])
-def get_products_by_category(category: str):
+async def get_products_by_category(category: str):
     products = [product for product in data["all_product"] if product["category"] == category]
     if not products:
         raise HTTPException(status_code=404, detail="Category not found")
@@ -2051,6 +2051,7 @@ def get_products_by_category(category: str):
 @app.get("/")
 def home():
     return data
+  
 
 @app.middleware("http")
 async def log_requests(request, call_next):
@@ -2058,7 +2059,7 @@ async def log_requests(request, call_next):
     response = await call_next(request)
     return response
 
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8000, reload=True)
+handler = Mangum(app)
+# if __name__ == "__main__":
+#     import uvicorn
+#     uvicorn.run(app, host="127.0.0.1", port=8000, reload=True)

@@ -2016,6 +2016,7 @@ data = {
   ]
 }
 
+# Endpoints
 @app.get("/data/featured_products", response_model=List[Product])
 async def get_featured_products():
     return data["featured_products"]
@@ -2053,10 +2054,6 @@ async def get_products_by_category(category: str):
 def home():
     return {"message": "Welcome to the FastAPI backend!"}
 
-@app.get("/products")
-def get_products():
-    return data
-
 # Middleware to log incoming requests
 @app.middleware("http")
 async def log_requests(request, call_next):
@@ -2066,7 +2063,3 @@ async def log_requests(request, call_next):
 
 # Mangum handler for Vercel
 handler = Mangum(app, lifespan="off")
-
-# if __name__ == "__main__":
-#     import uvicorn
-#     uvicorn.run(app, host="127.0.0.1", port=8000, reload=True)

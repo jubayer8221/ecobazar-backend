@@ -5,6 +5,7 @@ from typing import List, Optional
 import logging
 from mangum import Mangum
 
+
 # Set up logging
 logging.basicConfig(level=logging.INFO)
 
@@ -42,9 +43,6 @@ class Product(BaseModel):
     sku: str
     category: str
     tags: List[str]
-
-
-
 
 data = {
   "featured_products": [

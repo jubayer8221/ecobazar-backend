@@ -5,12 +5,20 @@
       "src": "main.py",
       "use": "@vercel/python",
       "config": {
-        "maxLambdaSize": "15mb", 
-        "timeout": 30 
+        "maxLambdaSize": "15mb",
+        "timeout": 30  
       }
     }
   ],
   "routes": [
+    {
+      "src": "/data/(.*)",
+      "dest": "main.py"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "main.py"
+    },
     {
       "src": "/(.*)",
       "dest": "main.py"

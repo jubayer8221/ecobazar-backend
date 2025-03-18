@@ -1,5 +1,5 @@
-from fastapi import FastAPI, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
+from fastapi import FastAPI, HTTPException, Request  # Add Request here
+# from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
 import logging
@@ -12,19 +12,19 @@ logger = logging.getLogger(__name__)
 # Initialize FastAPI app
 app = FastAPI()
 
-# CORS Middleware
-origins = [
-    "http://localhost:3000",  # Allow local frontend
-    "https://eco-bazar-psi.vercel.app",  # Allow your Vercel frontend
-]
+# # CORS Middleware
+# origins = [
+#     "http://localhost:3000",  # Allow local frontend
+#     "https://eco-bazar-psi.vercel.app",  # Allow your Vercel frontend
+# ]
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],  # Allow all HTTP methods
-    allow_headers=["*"],  # Allow all headers
-)
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=origins,
+#     allow_credentials=True,
+#     allow_methods=["*"],  # Allow all HTTP methods
+#     allow_headers=["*"],  # Allow all headers
+# )
 # Define the Product model
 class Product(BaseModel):
     id: int

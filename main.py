@@ -2036,6 +2036,13 @@ async def get_popular_products():
 async def get_hot_deals_products():
     logger.info("Fetching hot deals products")
     return data["hotDeals_product"]
+  
+@app.get("/data/all_product", response_model=List[Product])
+async def get_all_product():
+    logger.info("Fetching hot deals products")
+    return data["all_product"]
+  
+
 
 @app.get("/api/products/{product_id}", response_model=Product)
 async def get_product(product_id: int):

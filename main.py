@@ -11,7 +11,6 @@ logging.basicConfig(level=logging.INFO)
 # Initialize FastAPI app
 app = FastAPI()
 
-# Configure CORS
 origins = [
     "http://localhost:3000",  # Allow local frontend
     "https://eco-bazar-psi.vercel.app",  # Allow your Vercel frontend
@@ -2025,7 +2024,7 @@ async def get_featured_products():
     Returns a list of featured products.
     Replace the return statement with your actual data.
     """
-    return []
+    return data["featured_products"]
 
 @app.get("/data/popular_categories", response_model=List[Product])
 async def get_popular_categories():
@@ -2033,7 +2032,7 @@ async def get_popular_categories():
     Returns a list of popular categories.
     Replace the return statement with your actual data.
     """
-    return []
+    return data["popular_categories"]
 
 @app.get("/data/popular_product", response_model=List[Product])
 async def get_popular_products():
@@ -2049,7 +2048,7 @@ async def get_hot_deals_products():
     Returns a list of hot deals products.
     Replace the return statement with your actual data.
     """
-    return []
+    return data["hotDeals_product"]
 
 @app.get("/api/products/{product_id}", response_model=Product)
 async def get_product(product_id: int):
@@ -2073,7 +2072,7 @@ def home():
     Home route that returns a welcome message or placeholder data.
     Replace the return statement with your actual data.
     """
-    return {"message": "Welcome to the FastAPI backend!"}
+    return data
 
 # Middleware to log incoming requests
 @app.middleware("http")

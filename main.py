@@ -2018,53 +2018,44 @@ data = {
 
 @app.get("/data/featured_products", response_model=List[Product])
 async def get_featured_products():
-    """
-    Returns a list of featured products.
-    Replace the return statement with your actual data.
-    """
-    return []
+    return data["featured_products"]
 
 @app.get("/data/popular_categories", response_model=List[Product])
 async def get_popular_categories():
-    """
-    Returns a list of popular categories.
-    Replace the return statement with your actual data.
-    """
-    return []
+    return data["popular_categories"]
 
 @app.get("/data/popular_product", response_model=List[Product])
 async def get_popular_products():
-    
     return data["popular_product"]
 
 @app.get("/data/hotDeals_product", response_model=List[Product])
 async def get_hot_deals_products():
-    """
-    Returns a list of hot deals products.
-    Replace the return statement with your actual data.
-    """
-    return []
+    return data["hotDeals_product"]
 
 @app.get("/api/products/{product_id}", response_model=Product)
 async def get_product(product_id: int):
-    
+    for product in data["featured_products"] + data["popular_product"] + data["hotDeals_product"]:
+        if product["id"] == product_id:
+            return product
     raise HTTPException(status_code=404, detail="Product not found")
 
 @app.get("/api/products/category/{category}", response_model=List[Product])
 async def get_products_by_category(category: str):
-    """
-    Returns a list of products by category.
-    Replace the logic with your actual data lookup.
-    """
-    raise HTTPException(status_code=404, detail="Category not found")
+    products = []
+    for product in data["featured_products"] + data["popular_product"] + data["hotDeals_product"]:
+        if product["category"].lower() == category.lower():
+            products.append(product)
+    if not products:
+        raise HTTPException(status_code=404, detail="Category not found")
+    return products
 
 @app.get("/")
 def home():
-    """
-    Home route that returns a welcome message or placeholder data.
-    Replace the return statement with your actual data.
-    """
     return {"message": "Welcome to the FastAPI backend!"}
+
+@app.get("/products")
+def get_products():
+    return data
 
 # Middleware to log incoming requests
 @app.middleware("http")
@@ -2075,6 +2066,7 @@ async def log_requests(request, call_next):
 
 # Mangum handler for Vercel
 handler = Mangum(app, lifespan="off")
+
 # if __name__ == "__main__":
 #     import uvicorn
 #     uvicorn.run(app, host="127.0.0.1", port=8000, reload=True)

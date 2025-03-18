@@ -5,13 +5,13 @@ from typing import List, Optional
 import logging
 from mangum import Mangum
 
-
 # Set up logging
 logging.basicConfig(level=logging.INFO)
 
 # Initialize FastAPI app
 app = FastAPI()
 
+# CORS Middleware
 origins = [
     "http://localhost:3000",  # Allow local frontend
     "https://eco-bazar-psi.vercel.app",  # Allow your Vercel frontend
@@ -24,7 +24,6 @@ app.add_middleware(
     allow_methods=["*"],  # Allow all HTTP methods
     allow_headers=["*"],  # Allow all headers
 )
-
 # Define the Product model
 class Product(BaseModel):
     id: int
@@ -2052,7 +2051,7 @@ async def get_products_by_category(category: str):
 
 @app.get("/")
 def home():
-    return {"message": "Welcome to the FastAPI backend!"}
+    return {"message": "Welcome to the FastAPI For EcoBazar!"}
 
 # Middleware to log incoming requests
 @app.middleware("http")

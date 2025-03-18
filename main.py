@@ -1,27 +1,30 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from typing import List, Dict, Optional
-from starlette.middleware.cors import CORSMiddleware
+from typing import List, Optional
 import logging
+from mangum import Mangum
 
+# Set up logging
 logging.basicConfig(level=logging.INFO)
 
+# Initialize FastAPI app
 app = FastAPI()
 
 origins = [
-    "http://localhost:3000",
-    "https://eco-bazar-psi.vercel.app", 
+    "http://localhost:3000",  # Allow local frontend
+    "https://eco-bazar-psi.vercel.app",  # Allow your Vercel frontend
 ]
-# Allow requests from Next.js (Frontend)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],  # Allow all HTTP methods
-    allow_headers=["*"],
+    allow_headers=["*"],  # Allow all headers
 )
 
+# Define the Product model
 class Product(BaseModel):
     id: int
     name: str
@@ -38,6 +41,7 @@ class Product(BaseModel):
     sku: str
     category: str
     tags: List[str]
+
 
 
 
@@ -2015,50 +2019,70 @@ data = {
 }
 
 @app.get("/data/featured_products", response_model=List[Product])
-def get_featured_products():
+async def get_featured_products():
+    """
+    Returns a list of featured products.
+    Replace the return statement with your actual data.
+    """
     return data["featured_products"]
 
 @app.get("/data/popular_categories", response_model=List[Product])
-def get_popular_categories():
+async def get_popular_categories():
+    """
+    Returns a list of popular categories.
+    Replace the return statement with your actual data.
+    """
     return data["popular_categories"]
 
 @app.get("/data/popular_product", response_model=List[Product])
-def get_popular_products():
-    return data["popular_product"]
-  
+async def get_popular_products():
+    """
+    Returns a list of popular products.
+    Replace the return statement with your actual data.
+    """
+    return []
+
 @app.get("/data/hotDeals_product", response_model=List[Product])
-def get_popular_products():
+async def get_hot_deals_products():
+    """
+    Returns a list of hot deals products.
+    Replace the return statement with your actual data.
+    """
     return data["hotDeals_product"]
 
 @app.get("/api/products/{product_id}", response_model=Product)
-def get_product(product_id: int):
-    for product in data["popular_product"]:
-        if product["id"] == product_id:
-            return product
+async def get_product(product_id: int):
+    """
+    Returns a product by its ID.
+    Replace the logic with your actual data lookup.
+    """
     raise HTTPException(status_code=404, detail="Product not found")
 
 @app.get("/api/products/category/{category}", response_model=List[Product])
-def get_products_by_category(category: str):
-    products = [product for product in data["all_product"] if product["category"] == category]
-    if not products:
-        raise HTTPException(status_code=404, detail="Category not found")
-    return products
+async def get_products_by_category(category: str):
+    """
+    Returns a list of products by category.
+    Replace the logic with your actual data lookup.
+    """
+    raise HTTPException(status_code=404, detail="Category not found")
 
-# @app.get("/")
-# def home():
-    # return {"message": "Welcome to the FastAPI Fucked up API"}
-  
 @app.get("/")
 def home():
+    """
+    Home route that returns a welcome message or placeholder data.
+    Replace the return statement with your actual data.
+    """
     return data
 
+# Middleware to log incoming requests
 @app.middleware("http")
 async def log_requests(request, call_next):
     logging.info(f"Incoming request from: {request.client.host}")
     response = await call_next(request)
     return response
 
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8000, reload=True)
+# Mangum handler for Vercel
+handler = Mangum(app, lifespan="off")
+# if __name__ == "__main__":
+#     import uvicorn
+#     uvicorn.run(app, host="127.0.0.1", port=8000, reload=True)

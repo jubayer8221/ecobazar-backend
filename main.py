@@ -7,6 +7,7 @@ from mangum import Mangum
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # Initialize FastAPI app
 app = FastAPI()
@@ -2015,25 +2016,37 @@ data = {
   ]
 }
 
+# Middleware to log incoming requests
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    logger.info(f"Incoming request: {request.method} {request.url}")
+    response = await call_next(request)
+    return response
+
 # Endpoints
 @app.get("/data/featured_products", response_model=List[Product])
 async def get_featured_products():
+    logger.info("Fetching featured products")
     return data["featured_products"]
 
 @app.get("/data/popular_categories", response_model=List[Product])
 async def get_popular_categories():
+    logger.info("Fetching popular categories")
     return data["popular_categories"]
 
 @app.get("/data/popular_product", response_model=List[Product])
 async def get_popular_products():
+    logger.info("Fetching popular products")
     return data["popular_product"]
 
 @app.get("/data/hotDeals_product", response_model=List[Product])
 async def get_hot_deals_products():
+    logger.info("Fetching hot deals products")
     return data["hotDeals_product"]
 
 @app.get("/api/products/{product_id}", response_model=Product)
 async def get_product(product_id: int):
+    logger.info(f"Fetching product with ID: {product_id}")
     for product in data["featured_products"] + data["popular_product"] + data["hotDeals_product"]:
         if product["id"] == product_id:
             return product
@@ -2041,6 +2054,7 @@ async def get_product(product_id: int):
 
 @app.get("/api/products/category/{category}", response_model=List[Product])
 async def get_products_by_category(category: str):
+    logger.info(f"Fetching products in category: {category}")
     products = []
     for product in data["featured_products"] + data["popular_product"] + data["hotDeals_product"]:
         if product["category"].lower() == category.lower():
@@ -2051,14 +2065,8 @@ async def get_products_by_category(category: str):
 
 @app.get("/")
 def home():
-    return {"message": "Welcome to the FastAPI For EcoBazar!"}
-
-# Middleware to log incoming requests
-@app.middleware("http")
-async def log_requests(request, call_next):
-    logging.info(f"Incoming request from: {request.client.host}")
-    response = await call_next(request)
-    return response
+    logger.info("Home endpoint hit")
+    return {"message": "Welcome to the FastAPI backend!"}
 
 # Mangum handler for Vercel
 handler = Mangum(app, lifespan="off")

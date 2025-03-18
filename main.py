@@ -2,19 +2,21 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Dict, Optional
+from starlette.middleware.cors import CORSMiddleware
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 app = FastAPI()
 
 origins = [
-  "http://localhost:3000/",
-  "https://eco-bazar-psi.vercel.app/"
+    "http://localhost:3000",
+    "https://eco-bazar-psi.vercel.app", 
 ]
-
 # Allow requests from Next.js (Frontend)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # Change if frontend is hosted
-     # Change this to specific frontend domains for security
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],  # Allow all HTTP methods
     allow_headers=["*"],
@@ -2049,6 +2051,12 @@ def get_products_by_category(category: str):
 @app.get("/")
 def home():
     return data
+
+@app.middleware("http")
+async def log_requests(request, call_next):
+    logging.info(f"Incoming request from: {request.client.host}")
+    response = await call_next(request)
+    return response
 
 
 if __name__ == "__main__":

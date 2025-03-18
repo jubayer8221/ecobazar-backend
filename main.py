@@ -3,7 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
 import logging
-from mangum import Mangum
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -2016,12 +2015,6 @@ data = {
   ]
 }
 
-# Middleware to log incoming requests
-@app.middleware("http")
-async def log_requests(request: Request, call_next):
-    logger.info(f"Incoming request: {request.method} {request.url}")
-    response = await call_next(request)
-    return response
 
 # Endpoints
 @app.get("/data/featured_products", response_model=List[Product])
@@ -2064,9 +2057,5 @@ async def get_products_by_category(category: str):
     return products
 
 @app.get("/")
-def home():
-    logger.info("Home endpoint hit")
-    return {"message": "Welcome to the FastAPI backend!"}
-
-# Mangum handler for Vercel
-handler = Mangum(app, lifespan="off")
+async def home():
+    return "Welcome to the FreshMart API"

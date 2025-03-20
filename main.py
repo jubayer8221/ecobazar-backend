@@ -2063,7 +2063,7 @@ async def get_products_by_category(category: str):
     return products
   
   # Search for products based on query
-@app.get("/search")
+@app.get("/api/products//search")
 async def search_data(q: str = Query(..., min_lenght=1)):
   result = [item for item in products if q.lower() in item["name"].lower()]
   return {"results": results}

@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
@@ -2011,7 +2011,6 @@ data = {
         "category": "Fruits",
         "tags": ["Fruits", "Healthy", "Mango"]
       }
-    
   ]
 }
 
@@ -2062,7 +2061,13 @@ async def get_products_by_category(category: str):
     if not products:
         raise HTTPException(status_code=404, detail="Category not found")
     return products
+  
+  # Search for products based on query
+@app.get("/search")
+async def search_data(q: str = Query(..., min_lenght=1)):
+  result = [item for item in products if q.lower() in item["name"].lower()]
+  return {"results": results}
 
 @app.get("/")
 async def home():
-    return "Welcome to the FreshMart API"
+    return "Welcome to the EcoBazar API"

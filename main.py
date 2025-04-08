@@ -119,7 +119,7 @@ data = {
       "name": "Eggplant",
       "price": 34.0,
       "quantity": 1,
-      "oldPrice": None,
+      "oldPrice": 35,
       "image": "/images/hot4.png",
       "rating": 3,
       "sale": "40%",
@@ -166,7 +166,7 @@ data = {
       "image": "/image/image1.png",
       "price": 12.0,
       "quantity": 1,
-      "oldPrice": None,
+      "oldPrice": 15,
       "rating": 4,
       "sale": "40%",
       "thumbnails": [
@@ -804,7 +804,7 @@ data = {
   "hotDeals_product": [
     {
       "id": 401,
-      "name": "Chinese cabbage",
+      "name": "Green Lettuce",
       "price": 12.0,
       "oldPrice": 24.0,
       "image": "/images/hot1.png",
@@ -829,9 +829,10 @@ data = {
     },
     {
       "id": 402,
-      "name": "Chinese cabbage",
-      "price": 12.0,
-      "oldPrice": None,
+      "name": "Green Capsicum",
+      "price": 55.0,
+      "oldPrice": 75.0,
+      "sale": "20%",
       "image": "/images/hot2.png",
       "rating": 4,
       "quantity": 1,
@@ -845,9 +846,9 @@ data = {
     },
     {
       "id": 403,
-      "name": "Green Lettuce",
+      "name": "Red Capsicum",
       "price": 9.0,
-      "oldPrice": None,
+      "oldPrice": 10,
       "image": "/images/hot3.png",
       "rating": 4,
       "quantity": 1,
@@ -861,9 +862,9 @@ data = {
     },
     {
       "id": 404,
-      "name": "Eggplant",
+      "name": "Chinese Cabbage",
       "price": 34.0,
-      "oldPrice": None,
+      "oldPrice": 35.0,
       "image": "/images/hot4.png",
       "rating": 4,
       "sale": "40%",
@@ -878,9 +879,9 @@ data = {
     },
     {
       "id": 405,
-      "name": "Fresh Cauliflower",
+      "name": "Eggplant",
       "price": 12.0,
-      "oldPrice": None,
+      "oldPrice": 15.0,
       "image": "/images/hot5.png",
       "rating": 4,
       "quantity": 1,
@@ -894,7 +895,7 @@ data = {
     },
     {
       "id": 406,
-      "name": "Green Capsicum",
+      "name": "Fazli Mango",
       "price": 9.0,
       "oldPrice": 20.99,
       "sale": "50%",
@@ -911,7 +912,7 @@ data = {
     },
     {
       "id": 407,
-      "name": "Green Chili",
+      "name": "Fresh Corn",
       "price": 34.0,
       "oldPrice": None,
       "image": "/images/hot7.png",
@@ -944,7 +945,7 @@ data = {
     },
     {
       "id": 409,
-      "name": "Corn",
+      "name": "Fresh Cauliflower",
       "price": 12.0,
       "oldPrice": None,
       "image": "/images/hot9.png",
@@ -962,7 +963,7 @@ data = {
     },
     {
       "id": 410,
-      "name": "Red Chili",
+      "name": "Green Lettuce",
       "price": 12.0,
       "oldPrice": None,
       "image": "/images/hot1.png",

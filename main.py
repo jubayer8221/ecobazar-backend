@@ -1,9 +1,8 @@
-from fastapi import FastAPI, HTTPException, Request  # Add Request here
-# from fastapi.middleware.cors import CORSMiddleware
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
 import logging
-from mangum import Mangum
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -13,19 +12,21 @@ logger = logging.getLogger(__name__)
 app = FastAPI()
 
 # # CORS Middleware
-# origins = [
-#     "http://localhost:3000",  # Allow local frontend
-#     "https://eco-bazar-psi.vercel.app",  # Allow your Vercel frontend
-# ]
+origins = [
+    "http://localhost:3000",  # Allow local frontend
+    "https://eco-bazar-psi.vercel.app",  # Allow your Vercel frontend
+]
 
-# app.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=origins,
-#     allow_credentials=True,
-#     allow_methods=["*"],  # Allow all HTTP methods
-#     allow_headers=["*"],  # Allow all headers
-# )
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all HTTP methods
+    allow_headers=["*"],  # Allow all headers
+)
+
 # Define the Product model
+
 class Product(BaseModel):
     id: int
     name: str
@@ -830,6 +831,7 @@ data = {
       "id": 402,
       "name": "Chinese cabbage",
       "price": 12.0,
+      "oldPrice": None,
       "image": "/images/hot2.png",
       "rating": 4,
       "quantity": 1,
@@ -845,6 +847,7 @@ data = {
       "id": 403,
       "name": "Green Lettuce",
       "price": 9.0,
+      "oldPrice": None,
       "image": "/images/hot3.png",
       "rating": 4,
       "quantity": 1,
@@ -860,6 +863,7 @@ data = {
       "id": 404,
       "name": "Eggplant",
       "price": 34.0,
+      "oldPrice": None,
       "image": "/images/hot4.png",
       "rating": 4,
       "sale": "40%",
@@ -876,6 +880,7 @@ data = {
       "id": 405,
       "name": "Fresh Cauliflower",
       "price": 12.0,
+      "oldPrice": None,
       "image": "/images/hot5.png",
       "rating": 4,
       "quantity": 1,
@@ -908,6 +913,7 @@ data = {
       "id": 407,
       "name": "Green Chili",
       "price": 34.0,
+      "oldPrice": None,
       "image": "/images/hot7.png",
       "rating": 3,
       "sale": "40%",
@@ -924,6 +930,7 @@ data = {
       "id": 408,
       "name": "Big Potatoes",
       "price": 12.0,
+      "oldPrice": None,
       "image": "/images/hot8.png",
       "rating": 2,
       "quantity": 1,
@@ -939,6 +946,7 @@ data = {
       "id": 409,
       "name": "Corn",
       "price": 12.0,
+      "oldPrice": None,
       "image": "/images/hot9.png",
       "rating": 5,
       "reviews": 524,
@@ -956,6 +964,7 @@ data = {
       "id": 410,
       "name": "Red Chili",
       "price": 12.0,
+      "oldPrice": None,
       "image": "/images/hot1.png",
       "rating": 4,
       "quantity": 1,
@@ -2012,16 +2021,9 @@ data = {
         "category": "Fruits",
         "tags": ["Fruits", "Healthy", "Mango"]
       }
-    
   ]
 }
 
-# Middleware to log incoming requests
-@app.middleware("http")
-async def log_requests(request: Request, call_next):
-    logger.info(f"Incoming request: {request.method} {request.url}")
-    response = await call_next(request)
-    return response
 
 # Endpoints
 @app.get("/data/featured_products", response_model=List[Product])
@@ -2043,6 +2045,13 @@ async def get_popular_products():
 async def get_hot_deals_products():
     logger.info("Fetching hot deals products")
     return data["hotDeals_product"]
+  
+@app.get("/data/all_product", response_model=List[Product])
+async def get_all_product():
+    logger.info("Fetching hot deals products")
+    return data["all_product"]
+  
+
 
 @app.get("/api/products/{product_id}", response_model=Product)
 async def get_product(product_id: int):
@@ -2062,11 +2071,13 @@ async def get_products_by_category(category: str):
     if not products:
         raise HTTPException(status_code=404, detail="Category not found")
     return products
+  
+  # Search for products based on query
+@app.get("/api/products//search")
+async def search_data(q: str = Query(..., min_lenght=1)):
+  result = [item for item in products if q.lower() in item["name"].lower()]
+  return {"results": results}
 
 @app.get("/")
-def home():
-    logger.info("Home endpoint hit")
-    return {"message": "Welcome to the FastAPI backend!"}
-
-# Mangum handler for Vercel
-handler = Mangum(app, lifespan="off")
+async def home():
+    return "Welcome to the EcoBazar API"

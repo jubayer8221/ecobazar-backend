@@ -2071,12 +2071,6 @@ async def get_products_by_category(category: str):
     if not products:
         raise HTTPException(status_code=404, detail="Category not found")
     return products
-  
-  # Search for products based on query
-@app.get("/api/products//search")
-async def search_data(q: str = Query(..., min_lenght=1)):
-  result = [item for item in products if q.lower() in item["name"].lower()]
-  return {"results": results}
 
 @app.get("/")
 async def home():
